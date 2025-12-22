@@ -294,7 +294,11 @@ const FlightDashboard = () => {
               </thead>
               <tbody>
                 {flights.map((flight, index) => (
-                  <tr key={flight.id} className="border-b border-slate-100 hover:bg-slate-50 transition-colors" data-testid={`flight-row-${index}`}>
+                  <tr 
+                    key={flight.id} 
+                    className={`border-b border-slate-100 hover:bg-slate-50 transition-colors ${flight.isNew ? 'bg-orange-100' : ''}`}
+                    data-testid={`flight-row-${index}`}
+                  >
                     <td className="px-4 py-4 text-sm font-bold text-orange-600" data-testid={`policy-${index}`}>{flight.policyNumber}</td>
                     <td className="px-4 py-4 text-sm text-black" data-testid={`traveller-${index}`}>{flight.traveller}</td>
                     <td className="px-4 py-4 text-sm font-bold text-black" data-testid={`flight-${index}`}>{flight.flightNumber}</td>
