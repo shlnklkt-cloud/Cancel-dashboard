@@ -215,11 +215,11 @@ const FlightDashboard = () => {
   const getStatusBadge = (status) => {
     switch (status) {
       case "Delayed":
-        return <Badge className="shadow bg-[#FFFFE0] text-black font-bold hover:bg-[#FFFACD] border-[#FFFFE0]" data-testid={`status-badge-delayed`}>{status}</Badge>;
+        return <Badge className="shadow bg-[#FFFFE0] text-black font-semibold hover:bg-[#FFFACD] border-[#FFFFE0] px-4 py-1 text-sm rounded-full" data-testid={`status-badge-delayed`}>{status}</Badge>;
       case "On Time":
-        return <Badge className="shadow bg-[#DFF0D8] text-[#00008B] font-bold hover:bg-[#D4E9CC] border-[#DFF0D8]" data-testid={`status-badge-ontime`}>{status}</Badge>;
+        return <Badge className="shadow bg-[#DFF0D8] text-[#00008B] font-semibold hover:bg-[#D4E9CC] border-[#DFF0D8] px-4 py-1 text-sm rounded-full" data-testid={`status-badge-ontime`}>{status}</Badge>;
       case "Cancelled":
-        return <Badge className="shadow bg-[#FFE5E5] text-black font-bold hover:bg-[#FFD9D9] border-[#FFE5E5]" data-testid={`status-badge-cancelled`}>{status}</Badge>;
+        return <Badge className="shadow bg-[#FFE5E5] text-black font-semibold hover:bg-[#FFD9D9] border-[#FFE5E5] px-4 py-1 text-sm rounded-full" data-testid={`status-badge-cancelled`}>{status}</Badge>;
       default:
         return <Badge data-testid={`status-badge-default`}>{status}</Badge>;
     }
