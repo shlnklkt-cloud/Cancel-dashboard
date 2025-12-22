@@ -181,7 +181,7 @@ const FlightDashboard = () => {
 
       // Show Jiffy Jane message
       setJiffyJaneMessage(
-        `Hurray! Your claim has been successfully paid in the amount of $150.`
+        `A new claim of $150 has successfully been paid.`
       );
       setShowJiffyJane(true);
     }, 20000); // 20 seconds
