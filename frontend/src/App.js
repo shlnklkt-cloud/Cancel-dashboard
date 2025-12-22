@@ -173,9 +173,10 @@ const FlightDashboard = () => {
         status: "Cancelled",
         expectedTime: "10:01",
         actualTime: "N/A",
-        claimNumber: "CLM-TRV-2026-008432",
+        claimNumber: "CLM-TRV-2026-008431-1",
         claimStatus: "Paid",
-        claimAmount: "$150"
+        claimAmount: "$150",
+        isNew: true
       };
 
       // Add new cancelled row at the top
@@ -186,6 +187,13 @@ const FlightDashboard = () => {
         `A new claim of $150 has successfully been paid.`
       );
       setShowJiffyJane(true);
+
+      // Remove highlight after 5 seconds
+      setTimeout(() => {
+        setFlights(prevFlights => 
+          prevFlights.map(f => ({ ...f, isNew: false }))
+        );
+      }, 5000);
     }, 20000); // 20 seconds
 
     return () => clearTimeout(timer);
