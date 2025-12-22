@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
@@ -141,14 +141,27 @@ const initialFlights = [
   }
 ];
 
-// Next claim number for new rows
-let nextClaimNumber = 8432;
+// Predefined data for new rows
+const newTravellers = [
+  "John Tan", "Lisa Ng", "Michael Lee", "Emily Wong", "David Lim",
+  "Sophie Koh", "James Goh", "Michelle Teo", "Kevin Chia", "Rachel Yeo",
+  "Daniel Sim", "Amanda Phua", "Ryan Seah", "Natalie Tay", "Brandon Heng",
+  "Cheryl Ong", "Marcus Foo", "Joanne Lau", "Timothy Chew", "Vanessa Ho"
+];
 
-const getNextClaimNumber = () => {
-  const claimNum = `CLM-TRV-2026-00${nextClaimNumber}`;
-  nextClaimNumber++;
-  return claimNum;
-};
+const flightNumbers = [
+  "SQ123", "SQ456", "SQ789", "TR101", "TR202", "3K505", "MI321", "SQ852",
+  "CX888", "QF001", "EK432", "BA015", "JL060", "NH801", "KE623", "TG404"
+];
+
+const routes = [
+  "SIN → NRT", "SIN → ICN", "SIN → PVG", "SIN → LHR", "SIN → CDG",
+  "SIN → SYD", "SIN → MEL", "SIN → JFK", "SIN → LAX", "SIN → DXB",
+  "SIN → HND", "SIN → PEK", "SIN → FCO", "SIN → AMS", "SIN → FRA"
+];
+
+const statuses = ["Delayed", "Cancelled", "On Time"];
+const claimAmounts = [100, 150, 200, 250];
 
 const getStatusBadge = (status) => {
   switch (status) {
@@ -187,12 +200,74 @@ const getStatusBadge = (status) => {
 const FlightDashboard = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [flights, setFlights] = useState(initialFlights);
+  const nextIdRef = useRef(11);
+  const nextPolicyRef = useRef(18000);
+  const nextClaimRef = useRef(8432);
 
+  // Update time every second
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
     return () => clearInterval(timer);
+  }, []);
+
+  // Auto-add new row every 20 seconds
+  useEffect(() => {
+    const addNewRow = () => {
+      const randomTraveller = newTravellers[Math.floor(Math.random() * newTravellers.length)];
+      const randomFlight = flightNumbers[Math.floor(Math.random() * flightNumbers.length)];
+      const randomRoute = routes[Math.floor(Math.random() * routes.length)];
+      const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+      
+      // Generate random times
+      const hour = Math.floor(Math.random() * 24).toString().padStart(2, '0');
+      const minute = Math.floor(Math.random() * 60).toString().padStart(2, '0');
+      const expectedTime = `${hour}:${minute}`;
+      
+      // For delayed flights, actual time is later
+      let actualTime = expectedTime;
+      if (randomStatus === "Delayed") {
+        const delayHours = parseInt(hour) + Math.floor(Math.random() * 6) + 1;
+        actualTime = `${(delayHours % 24).toString().padStart(2, '0')}:${minute}`;
+      } else if (randomStatus === "Cancelled") {
+        actualTime = "N/A";
+      }
+
+      // Generate claim info only for Delayed or Cancelled flights
+      const hasClaim = randomStatus === "Delayed" || randomStatus === "Cancelled";
+      const claimNumber = hasClaim ? `CLM-TRV-2026-00${nextClaimRef.current}` : null;
+      const claimStatus = hasClaim ? "Paid" : null;
+      const claimAmount = hasClaim ? claimAmounts[Math.floor(Math.random() * claimAmounts.length)] : null;
+
+      if (hasClaim) {
+        nextClaimRef.current++;
+      }
+
+      const newFlight = {
+        id: nextIdRef.current,
+        policyNumber: `TRV-2026-0${nextPolicyRef.current}`,
+        traveller: randomTraveller,
+        flightNumber: randomFlight,
+        route: randomRoute,
+        status: randomStatus,
+        expectedTime: expectedTime,
+        actualTime: actualTime,
+        claimNumber: claimNumber,
+        claimStatus: claimStatus,
+        claimAmount: claimAmount
+      };
+
+      nextIdRef.current++;
+      nextPolicyRef.current++;
+
+      // Add new row at the top
+      setFlights(prevFlights => [newFlight, ...prevFlights]);
+    };
+
+    const intervalId = setInterval(addNewRow, 20000); // 20 seconds
+
+    return () => clearInterval(intervalId);
   }, []);
 
   // Format time for Singapore timezone
@@ -274,7 +349,11 @@ const FlightDashboard = () => {
               </thead>
               <tbody>
                 {flights.map((flight, index) => (
-                  <tr key={flight.id} className="border-b border-slate-100 hover:bg-slate-50 transition-colors" data-testid={`flight-row-${index}`}>
+                  <tr 
+                    key={flight.id} 
+                    className={`border-b border-slate-100 hover:bg-slate-50 transition-colors ${index === 0 && flights.length > 10 ? 'bg-green-50 animate-pulse' : ''}`}
+                    data-testid={`flight-row-${index}`}
+                  >
                     <td className="px-4 py-4 text-sm font-medium text-orange-600" data-testid={`policy-${index}`}>{flight.policyNumber}</td>
                     <td className="px-4 py-4 text-sm font-bold text-black" data-testid={`traveller-${index}`}>{flight.traveller}</td>
                     <td className="px-4 py-4 text-sm font-bold text-black" data-testid={`flight-${index}`}>{flight.flightNumber}</td>
