@@ -247,7 +247,7 @@ const FlightDashboard = () => {
               <h2 className="text-2xl font-bold mb-1" data-testid="board-title">Flight Information Board</h2>
               <p className="text-slate-300 text-sm" data-testid="board-subtitle">Real-time flight status and departure times</p>
             </div>
-            <div className="text-left">
+            <div className="bg-slate-700 rounded-lg p-4 text-left" data-testid="timezone-card">
               <div className="flex items-center gap-2 text-slate-400 mb-1" data-testid="timezone-label">
                 <Clock className="w-4 h-4" />
                 <span className="text-sm">Singapore Time (SGT)</span>
