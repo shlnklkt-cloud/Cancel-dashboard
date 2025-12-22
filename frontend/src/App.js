@@ -279,13 +279,13 @@ const FlightDashboard = () => {
               <tbody>
                 {flights.map((flight, index) => (
                   <tr key={flight.id} className="border-b border-slate-100 hover:bg-slate-50 transition-colors" data-testid={`flight-row-${index}`}>
-                    <td className="px-4 py-4 text-sm font-medium text-orange-600" data-testid={`policy-${index}`}>{flight.policyNumber}</td>
-                    <td className="px-4 py-4 text-sm font-bold text-black" data-testid={`traveller-${index}`}>{flight.traveller}</td>
+                    <td className="px-4 py-4 text-sm font-bold text-orange-600" data-testid={`policy-${index}`}>{flight.policyNumber}</td>
+                    <td className="px-4 py-4 text-sm text-black" data-testid={`traveller-${index}`}>{flight.traveller}</td>
                     <td className="px-4 py-4 text-sm font-bold text-black" data-testid={`flight-${index}`}>{flight.flightNumber}</td>
-                    <td className="px-4 py-4 text-sm font-bold text-black" data-testid={`route-${index}`}>{flight.route}</td>
+                    <td className="px-4 py-4 text-sm text-black" data-testid={`route-${index}`}>{flight.route}</td>
                     <td className="px-4 py-4 text-sm" data-testid={`status-${index}`}>{getStatusBadge(flight.status)}</td>
-                    <td className="px-4 py-4 text-sm font-bold text-black" data-testid={`expected-${index}`}>{flight.expectedTime}</td>
-                    <td className="px-4 py-4 text-sm font-bold text-black" data-testid={`actual-${index}`}>{flight.actualTime}</td>
+                    <td className="px-4 py-4 text-sm text-black" data-testid={`expected-${index}`}>{flight.expectedTime}</td>
+                    <td className="px-4 py-4 text-sm text-black" data-testid={`actual-${index}`}>{flight.actualTime}</td>
                     <td className="px-4 py-4 text-sm" data-testid={`claim-number-${index}`}>
                       {flight.claimNumber !== "-" ? (
                         <span className="text-black font-bold">{flight.claimNumber}</span>
@@ -295,14 +295,14 @@ const FlightDashboard = () => {
                     </td>
                     <td className="px-4 py-4 text-sm" data-testid={`claim-status-${index}`}>
                       {flight.claimStatus !== "-" ? (
-                        <Badge className="bg-blue-500 text-white font-bold hover:bg-blue-600">{flight.claimStatus}</Badge>
+                        <Badge className="bg-[#1E88E5] text-black font-bold hover:bg-[#1976D2]">{flight.claimStatus}</Badge>
                       ) : (
                         <span className="text-slate-400">-</span>
                       )}
                     </td>
                     <td className="px-4 py-4 text-sm" data-testid={`claim-amount-${index}`}>
                       {flight.claimAmount !== "-" ? (
-                        <span className="text-black font-bold">{flight.claimAmount}</span>
+                        <span className="text-[#16A34A] font-bold">{flight.claimAmount}</span>
                       ) : (
                         <span className="text-slate-400">-</span>
                       )}
