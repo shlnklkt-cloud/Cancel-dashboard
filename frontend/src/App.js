@@ -242,18 +242,18 @@ const FlightDashboard = () => {
       <main className="max-w-7xl mx-auto px-8 py-8">
         {/* Flight Information Board */}
         <div className="bg-slate-800 text-white rounded-lg shadow-xl p-6 mb-6" data-testid="flight-info-board">
-          <div className="flex justify-between items-center mb-4">
+          <div className="flex justify-between items-start mb-4">
             <div>
               <h2 className="text-2xl font-bold mb-1" data-testid="board-title">Flight Information Board</h2>
               <p className="text-slate-300 text-sm" data-testid="board-subtitle">Real-time flight status and departure times</p>
             </div>
-            <div className="text-right">
-              <div className="flex items-center gap-2 text-slate-300 mb-1" data-testid="timezone-label">
+            <div className="text-left">
+              <div className="flex items-center gap-2 text-slate-400 mb-1" data-testid="timezone-label">
                 <Clock className="w-4 h-4" />
                 <span className="text-sm">Singapore Time (SGT)</span>
               </div>
-              <div className="text-lg font-medium text-slate-300" data-testid="current-date">{formatDate(currentTime)}</div>
-              <div className="text-3xl font-mono font-bold" data-testid="current-time">{formatTime(currentTime)}</div>
+              <div className="text-sm text-slate-400 mb-1" data-testid="current-date">{formatDate(currentTime)}</div>
+              <div className="text-3xl font-bold text-white" data-testid="current-time">{formatTime(currentTime)}</div>
             </div>
           </div>
         </div>
