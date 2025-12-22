@@ -179,8 +179,16 @@ const FlightDashboard = () => {
         isNew: true
       };
 
-      // Add new cancelled row at the top
-      setFlights(prevFlights => [cancelledSQ656, ...prevFlights]);
+      // Add new cancelled row at the top and update existing CLM-TRV-2026-008431 row
+      setFlights(prevFlights => {
+        const updatedFlights = prevFlights.map(flight => {
+          if (flight.claimNumber === "CLM-TRV-2026-008431") {
+            return { ...flight, actualTime: "N/A" };
+          }
+          return flight;
+        });
+        return [cancelledSQ656, ...updatedFlights];
+      });
 
       // Show Jiffy Jane message
       setJiffyJaneMessage(
