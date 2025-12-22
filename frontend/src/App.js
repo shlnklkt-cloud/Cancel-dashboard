@@ -382,6 +382,71 @@ const FlightDashboard = () => {
           </div>
         </div>
       )}
+
+      {/* Claim Details Modal */}
+      {showClaimDetails && selectedClaim && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" data-testid="claim-details-overlay">
+          <div 
+            className="bg-white rounded-lg shadow-2xl p-6 max-w-md w-full mx-4 relative"
+            data-testid="claim-details-modal"
+          >
+            <button
+              onClick={() => setShowClaimDetails(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+              data-testid="claim-details-close-button"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            <h2 className="text-xl font-bold text-gray-900 mb-6" data-testid="claim-details-title">
+              Claim Details
+            </h2>
+
+            <div className="space-y-4">
+              <div>
+                <p className="text-sm text-gray-500 mb-1">Claim Number</p>
+                <p className="text-lg font-bold text-gray-900" data-testid="claim-details-number">{selectedClaim.claimNumber}</p>
+              </div>
+
+              <div>
+                <p className="text-sm text-gray-500 mb-1">Flight Number</p>
+                <p className="text-lg font-bold text-gray-900" data-testid="claim-details-flight">{selectedClaim.flightNumber}</p>
+              </div>
+
+              <div>
+                <p className="text-sm text-gray-500 mb-1">Status</p>
+                <Badge className="bg-[#1E88E5] text-white font-bold" data-testid="claim-details-status">{selectedClaim.claimStatus}</Badge>
+              </div>
+
+              <div>
+                <p className="text-sm text-gray-500 mb-1">Paid Amount</p>
+                <p className="text-2xl font-bold text-[#16A34A]" data-testid="claim-details-amount">{selectedClaim.claimAmount}</p>
+              </div>
+            </div>
+
+            {/* Jiffy Jane Confirmation Message */}
+            <div className="mt-6 bg-green-50 rounded-lg p-4">
+              <div className="flex gap-3 items-start">
+                <div className="flex-shrink-0">
+                  <img 
+                    src="https://customer-assets.emergentagent.com/job_cancel-notify-dash/artifacts/uqdtwa8d_image.png" 
+                    alt="Jiffy Jane"
+                    className="w-10 h-10 rounded-lg object-cover"
+                  />
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-sm font-bold text-gray-900 mb-1">Jiffy Jane</h4>
+                  <p className="text-sm text-gray-700" data-testid="claim-details-message">
+                    A new claim of {selectedClaim.claimAmount} has successfully been paid.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
