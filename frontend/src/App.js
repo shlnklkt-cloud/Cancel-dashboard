@@ -227,6 +227,12 @@ const FlightDashboard = () => {
     }
   };
 
+  // Handle claim number click
+  const handleClaimClick = (flight) => {
+    setSelectedClaim(flight);
+    setShowClaimDetails(true);
+  };
+
   return (
     <div className="min-h-screen bg-gray-100" data-testid="flight-dashboard">
       {/* Header */}
