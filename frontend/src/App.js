@@ -240,12 +240,11 @@ const FlightDashboard = () => {
       <header className="bg-orange-500 text-white py-4 px-8 shadow-lg" data-testid="dashboard-header">
         <div className="max-w-7xl mx-auto flex items-center gap-6">
           {/* Income Logo */}
-          <div className="flex items-center gap-2">
-            <svg className="w-8 h-8" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 4C11.163 4 4 11.163 4 20C4 28.837 11.163 36 20 36C28.837 36 36 28.837 36 20C36 11.163 28.837 4 20 4ZM20 8C26.627 8 32 13.373 32 20C32 26.627 26.627 32 20 32C13.373 32 8 26.627 8 20C8 13.373 13.373 8 20 8Z" fill="white"/>
-              <path d="M20 12C15.582 12 12 15.582 12 20C12 24.418 15.582 28 20 28V12Z" fill="white"/>
+          <div className="flex items-center gap-1">
+            <svg className="w-10 h-10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 32 C8 18, 8 12, 20 12 C32 12, 32 18, 32 24" stroke="white" strokeWidth="6" strokeLinecap="round" fill="none"/>
             </svg>
-            <span className="text-2xl font-bold">income</span>
+            <span className="text-2xl font-bold tracking-tight">income</span>
           </div>
           <div className="border-l border-white/30 pl-6 flex items-center gap-3">
             <Plane className="w-8 h-8" />
