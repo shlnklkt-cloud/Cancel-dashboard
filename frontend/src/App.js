@@ -296,7 +296,13 @@ const FlightDashboard = () => {
                     <td className="px-4 py-4 text-sm text-black" data-testid={`actual-${index}`}>{flight.actualTime}</td>
                     <td className="px-4 py-4 text-sm" data-testid={`claim-number-${index}`}>
                       {flight.claimNumber !== "-" ? (
-                        <span className="text-black font-bold">{flight.claimNumber}</span>
+                        <button 
+                          onClick={() => handleClaimClick(flight)}
+                          className="text-blue-600 font-bold hover:text-blue-800 hover:underline cursor-pointer"
+                          data-testid={`claim-number-btn-${index}`}
+                        >
+                          {flight.claimNumber}
+                        </button>
                       ) : (
                         <span className="text-slate-400">-</span>
                       )}
