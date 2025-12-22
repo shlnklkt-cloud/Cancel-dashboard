@@ -240,11 +240,12 @@ const FlightDashboard = () => {
       <header className="bg-orange-500 text-white py-4 px-8 shadow-lg" data-testid="dashboard-header">
         <div className="max-w-7xl mx-auto flex items-center gap-6">
           {/* Income Logo */}
-          <div className="flex items-center gap-1">
-            <svg className="w-10 h-10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 32 C8 18, 8 12, 20 12 C32 12, 32 18, 32 24" stroke="white" strokeWidth="6" strokeLinecap="round" fill="none"/>
-            </svg>
-            <span className="text-2xl font-bold tracking-tight">income</span>
+          <div className="flex items-center">
+            <img 
+              src="https://customer-assets.emergentagent.com/job_cancel-monitor/artifacts/3fnoepok_image.png" 
+              alt="income logo"
+              className="h-10"
+            />
           </div>
           <div className="border-l border-white/30 pl-6 flex items-center gap-3">
             <Plane className="w-8 h-8" />
