@@ -9,6 +9,8 @@ const FlightDashboard = () => {
   const [flights, setFlights] = useState([]);
   const [showJiffyJane, setShowJiffyJane] = useState(false);
   const [jiffyJaneMessage, setJiffyJaneMessage] = useState("");
+  const [showClaimDetails, setShowClaimDetails] = useState(false);
+  const [selectedClaim, setSelectedClaim] = useState(null);
 
   // Initial flight data with SQ656 having paid claim
   const initialFlights = [
