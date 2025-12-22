@@ -187,13 +187,6 @@ const FlightDashboard = () => {
         `A new claim of $150 has successfully been paid.`
       );
       setShowJiffyJane(true);
-
-      // Remove highlight after 5 seconds
-      setTimeout(() => {
-        setFlights(prevFlights => 
-          prevFlights.map(f => ({ ...f, isNew: false }))
-        );
-      }, 5000);
     }, 20000); // 20 seconds
 
     return () => clearTimeout(timer);
