@@ -343,46 +343,48 @@ const FlightDashboard = () => {
         </div>
       </main>
 
-      {/* Jiffy Jane Message - Bottom Right Corner Notification */}
+      {/* Jiffy Jane Message - Center of Screen */}
       {showJiffyJane && (
-        <div 
-          className="fixed bottom-8 right-8 z-50 bg-white rounded-lg shadow-2xl p-5 max-w-sm border border-gray-200 animate-in slide-in-from-right-5"
-          data-testid="jiffy-jane-dialog"
-        >
-          <button
-            onClick={() => setShowJiffyJane(false)}
-            className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors"
-            data-testid="jiffy-jane-close-button"
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" data-testid="jiffy-jane-overlay">
+          <div 
+            className="bg-white rounded-lg shadow-2xl p-5 max-w-sm border border-gray-200"
+            data-testid="jiffy-jane-dialog"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-          
-          <div className="flex gap-4 items-start">
-            {/* Jiffy Jane Logo */}
-            <div className="flex-shrink-0">
-              <img 
-                src="https://customer-assets.emergentagent.com/job_cancel-notify-dash/artifacts/uqdtwa8d_image.png" 
-                alt="Jiffy Jane"
-                className="w-14 h-14 rounded-lg object-cover"
-              />
+            <button
+              onClick={() => setShowJiffyJane(false)}
+              className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors"
+              data-testid="jiffy-jane-close-button"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
+            <div className="flex gap-4 items-start">
+              {/* Jiffy Jane Logo */}
+              <div className="flex-shrink-0">
+                <img 
+                  src="https://customer-assets.emergentagent.com/job_cancel-notify-dash/artifacts/uqdtwa8d_image.png" 
+                  alt="Jiffy Jane"
+                  className="w-14 h-14 rounded-lg object-cover"
+                />
+              </div>
+              {/* Message Content */}
+              <div className="flex-1 pt-1">
+                <h3 className="text-base font-bold text-gray-900 mb-2" data-testid="jiffy-jane-title">
+                  Jiffy Jane
+                </h3>
+                <p className="text-sm text-gray-800 leading-relaxed" data-testid="jiffy-jane-message">
+                  {jiffyJaneMessage}
+                </p>
+              </div>
             </div>
-            {/* Message Content */}
-            <div className="flex-1 pt-1">
-              <h3 className="text-base font-bold text-gray-900 mb-2" data-testid="jiffy-jane-title">
-                Jiffy Jane
-              </h3>
-              <p className="text-sm text-gray-800 leading-relaxed" data-testid="jiffy-jane-message">
-                {jiffyJaneMessage}
-              </p>
-            </div>
-          </div>
-          
-          <div className="mt-4 flex justify-end border-t border-gray-100 pt-3">
-            <div className="flex items-center gap-1.5 text-xs text-gray-500">
-              <span className="inline-block w-4 h-4 bg-slate-900 rounded flex items-center justify-center text-white text-[10px]">e</span>
-              <span>Made with Emergent</span>
+            
+            <div className="mt-4 flex justify-end border-t border-gray-100 pt-3">
+              <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                <span className="inline-block w-4 h-4 bg-slate-900 rounded flex items-center justify-center text-white text-[10px]">e</span>
+                <span>Made with Emergent</span>
+              </div>
             </div>
           </div>
         </div>
