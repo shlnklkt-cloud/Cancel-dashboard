@@ -365,12 +365,12 @@ const FlightDashboard = () => {
       {showJiffyJane && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" data-testid="jiffy-jane-overlay">
           <div 
-            className="bg-white rounded-lg shadow-2xl p-5 max-w-sm border border-gray-200"
+            className="bg-white rounded-lg shadow-2xl p-5 max-w-sm border border-gray-200 relative"
             data-testid="jiffy-jane-dialog"
           >
             <button
               onClick={() => setShowJiffyJane(false)}
-              className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors"
+              className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors"
               data-testid="jiffy-jane-close-button"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -378,7 +378,7 @@ const FlightDashboard = () => {
               </svg>
             </button>
             
-            <div className="flex gap-4 items-start">
+            <div className="flex gap-4 items-start pr-6">
               {/* Jiffy Jane Logo */}
               <div className="flex-shrink-0">
                 <img 
