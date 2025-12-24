@@ -442,7 +442,7 @@ const FlightDashboard = () => {
 
               <div>
                 <p className="text-sm text-gray-500 mb-1">Status</p>
-                <Badge className="bg-[#1E88E5] text-white font-bold" data-testid="claim-details-status">{selectedClaim.claimStatus}</Badge>
+                <Badge className="bg-[#9DC183] text-black font-bold" data-testid="claim-details-status">{selectedClaim.claimStatus}</Badge>
               </div>
 
               <div>
