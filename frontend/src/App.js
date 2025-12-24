@@ -332,7 +332,7 @@ const FlightDashboard = () => {
                     </td>
                     <td className="px-4 py-4 text-sm" data-testid={`claim-status-${index}`}>
                       {flight.claimStatus !== "-" ? (
-                        <Badge className="bg-[#1E88E5] text-black font-bold hover:bg-[#1976D2]">{flight.claimStatus}</Badge>
+                        <Badge className="bg-[#9DC183] text-black font-bold hover:bg-[#8DB373]">{flight.claimStatus}</Badge>
                       ) : (
                         <span className="text-slate-400">-</span>
                       )}
