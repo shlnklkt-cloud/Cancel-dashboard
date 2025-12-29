@@ -466,7 +466,7 @@ const FlightDashboard = () => {
                 <div className="flex-1">
                   <h4 className="text-sm font-bold text-gray-900 mb-1">Jiffy Jane</h4>
                   <p className="text-sm text-gray-700" data-testid="claim-details-message">
-                    A new claim of {selectedClaim.claimAmount} has successfully been paid.
+                    An additional claim of {selectedClaim.claimAmount} has successfully been paid.
                   </p>
                 </div>
               </div>
