@@ -190,11 +190,13 @@ const FlightDashboard = () => {
         return [cancelledSQ656, ...updatedFlights];
       });
 
-      // Show Jiffy Jane message
-      setJiffyJaneMessage(
-        `A new claim of $150 has successfully been paid.`
-      );
-      setShowJiffyJane(true);
+      // Show Jiffy Jane message after 30 seconds of row insertion
+      setTimeout(() => {
+        setJiffyJaneMessage(
+          `An additional claim of $150 has successfully been paid.`
+        );
+        setShowJiffyJane(true);
+      }, 30000); // 30 seconds after row insertion
     }, 20000); // 20 seconds
 
     return () => clearTimeout(timer);
